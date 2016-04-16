@@ -17,7 +17,7 @@ library(gapminder)
 
 ## Exploration with gapminder and dplyr 
 
-```{r, echo=FALSE, include=FALSE}
+```{r, echo=FALSE}
 
 # Subset rows
 filter(gapminder, lifeExp<29)
@@ -93,6 +93,7 @@ gapminder %>%
   ungroup()
 ```
 
+## Data Visualization 
 
 ```{r }
 

@@ -1,0 +1,55 @@
+---
+title: "viz"
+author: "Lvbr"
+date: "16 de abril de 2016"
+output: html_document
+---
+
+## Scatterplot
+
+```{r load, results='hide', echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(gapminder)
+library(ggExtra)
+
+# preview data
+gapminder
+
+# get range of available data
+summary(gapminder)
+
+# setup dataframe
+g = gapminder %>%
+  filter(year==2007) %>%   # most recent year 
+  mutate(pop_m = pop/1e6)  # population, millions
+
+# plot scatterplot of most recent year 
+s = ggplot(g, aes(x=gdpPercap, y=lifeExp)) +
+  geom_point()+
+  theme_bw()+
+  removeGrid(x=TRUE, y=TRUE)
+s
+
+# add aesthetic of size by population
+s = s + 
+  aes(size=pop_m)
+s
+
+# add aesthetic of color by continent
+s = s + 
+  aes(color=continent)
+s
+
+# add title, update axes labels
+s = s + 
+  ggtitle('Health & Wealth of Nations for 2007') +
+  xlab('GDP per capita ($/year)') +
+  ylab('Life expectancy (years)')
+s
+```
+
+```{r}
+
+```
+
